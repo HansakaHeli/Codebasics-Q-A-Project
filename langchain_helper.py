@@ -51,12 +51,13 @@ def get_qa_chain():
         template=prompt_template, input_variables=["context", "question"]
     )
 
-    chain = RetrievalQA.from_chain_type(llm=llm,
-                                        chain_type="stuff",
-                                        retriever=retriever,
-                                        input_key="query",
-                                        return_source_documents=True,
-                                        chain_type_kwargs={"prompt": PROMPT})
+    # Create a RetrievalQA chain using a specific chain type
+    chain = RetrievalQA.from_chain_type(llm=llm,                              # The language model to be used for generating answers
+                                        chain_type="stuff",                   # The type of chain, "stuff" is a method for handling retrieved documents
+                                        retriever=retriever,                  # The retriever object responsible for fetching relevant documents
+                                        input_key="query",                    # The key in the input dictionary that contains the query
+                                        return_source_documents=True,         # A flag to indicate whether to return the source documents along with the answer
+                                        chain_type_kwargs={"prompt": PROMPT}) # Additional keyword arguments for the chain type, including the custom prompt
 
     return chain
 

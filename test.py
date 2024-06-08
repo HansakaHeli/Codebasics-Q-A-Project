@@ -6,10 +6,9 @@ from langchain.document_loaders.csv_loader import CSVLoader
 from langchain_community.embeddings import HuggingFaceInstructEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.prompts import PromptTemplate
+import os
 
-
-
-api_key = 'AIzaSyCaVMWGo7HMKXngnBqToyyNFlQCJVKXmvY' # get this free api key from https://makersuite.google.com/
+api_key = os.environ["GOOGLE_API_KEY"] # get this free api key from https://makersuite.google.com/
 
 llm = GoogleGenerativeAI(model="models/text-bison-001", google_api_key=api_key, temperature=0.1)
 

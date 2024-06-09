@@ -47,8 +47,12 @@ def get_qa_chain():
 
     QUESTION: {question}"""
 
+    # Create an instance of the PromptTemplate class
+    # The 'template' argument is assigned the prompt_template string
+    # The 'input_variables' argument specifies the variables that will be replaced in the template
     PROMPT = PromptTemplate(
-        template=prompt_template, input_variables=["context", "question"]
+        template=prompt_template,               # Template with placeholders for context and question
+        input_variables=["context", "question"] # List of variables that will be replaced in the template
     )
 
     # Create a RetrievalQA chain using a specific chain type
